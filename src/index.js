@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const routes= require('./routes')
 
 //Porta em que o backend roda
 const port = process.env.PORT || 3333; 
@@ -8,8 +9,6 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-
-
 
 /**
  * MÉTODOS HTTP
@@ -39,22 +38,19 @@ app.use(express.json());
  * Rota/recurso 
  */
 
-app.get('/users' , (request, response) => {
-  
-  const params = request.query;
-  const params2 = request.params;
+/**
+ * BANCOS DE DADOS
+ * 
+ * SQL: MySQL, SQLite, PostgreSQL
+ * NoSQL: MongoDB, CouchDB, etc
+ * 
+ * Para fazer a comunicacao com o banco de dados podemos usar:
+ *  Driver: escreve em SQL (SELECT * FROM users)
+ *  Query Builder: usa JS (table('users').select('*').where())
+ *    - o KNEX eh um query builder
+ */
 
-  //request.query retorna os Query Params
-  //resquest.params retorna os Route Params
-
-  console.log(params);
-  console.log(params2);
-
-  return response.json({
-    evento: "Semana Omni Stack",
-    aluno: "Diego Snatos"
-  })
-})
+app.use(routes);
 
 app.listen(port, () => {
   console.log('Server listening on port ' + port);
