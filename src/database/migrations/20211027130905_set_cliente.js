@@ -1,13 +1,3 @@
-/**
- * Migrations sao um controle de versao do banco de dados 
- * sempre que for alterar ou criar algo novo no db tem que dar um
- * npx knex migrate:make <nome descritivo do que esta fazendo>
- * dps de pronta, pra executar, da um npx knex migrate:latest
- * */
-
-/**
- * Metodo up eh o da criacao da tabela e o down eh pra desfazer
- */
 exports.up = function(knex) {
   /**
    * Criando uma tabela no DB. Cada table. eh uma nova coluna
