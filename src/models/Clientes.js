@@ -1,4 +1,5 @@
 const connection = require('../database/connection');
+const {v4: uuidv4} = require('uuid');
 
 /**
  * Create
@@ -12,6 +13,11 @@ module.exports = {
 
   //Insere um novo cliente na coluna
   async create(cliente){
+    
+     //Cria um id complexo para o cliente
+    const cliente_id = uuidv4();
+    cliente.id = cliente_id;
+
     const result = await connection('clientes').insert(cliente);
     return result;
     /**
@@ -45,9 +51,5 @@ module.exports = {
     const result = await connection('clientes').where({category_id}).delete();
     return result;
   }
-
-
-
-
 }
 
