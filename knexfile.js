@@ -9,8 +9,11 @@ module.exports = {
     },
     migrations: {
       directory: './src/database/migrations'
-    }
+    },
+    useNullAsDefault: false
   },
+
+  
 
   staging: {
     client: 'postgresql',
