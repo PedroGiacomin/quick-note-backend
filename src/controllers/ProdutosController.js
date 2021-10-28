@@ -8,10 +8,10 @@ module.exports = {
 
       //Chama a funcao DO MODEL para criar no banco de dados
       const result = await ProdutosModel.create(newProduto);
-    
-
+  
       // O sqlite por padrao retorna o id quando cria
       return response.status(200).json(result);
+
     }catch(error){
       console.warn("Product creation failed: ", error)
       

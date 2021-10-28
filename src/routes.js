@@ -3,6 +3,20 @@ const ProdutosController = require('./controllers/ProdutosController');
 
 const routes = express.Router();
 
+/**
+ * Ex produto:
+  {
+    "produto_id" : "123",
+    "nome" : "Anel Splindow",
+    "preco" : 10.99,
+    "tamanho" : 15,
+    "quantidade" : 1,
+    "imagem" : "./anel1.png",
+    "descricao" : "Anelzassooo",
+    "id" : "cliente-x"
+  }
+ */   
+
 //Rotas
 
 //Simular o banco de dados aq
