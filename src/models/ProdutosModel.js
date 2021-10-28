@@ -9,7 +9,7 @@ module.exports = {
     
      //Cria um id complexo para o cliente
     const product_id = uuidv4();
-    product.product_id = product_id;
+    product.produto_id = product_id;
 
     const result = await connection('produtos').insert(product);
     return result;

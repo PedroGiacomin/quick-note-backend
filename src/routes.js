@@ -1,4 +1,5 @@
 const express = require('express');
+const ProdutosController = require('./controllers/ProdutosController');
 
 const routes = express.Router();
 
@@ -24,13 +25,20 @@ const users = [
   },
 ]
 
+//Produtos
+routes.get('/produtos/:id', ProdutosController.getById);
+routes.post('/produtos', ProdutosController.create);
+routes.put('/produtos', ProdutosController.update);
+routes.delete('/produtos', ProdutosController.delete);
+
+//Clientes
 //Conseguindo o vetor do backend
-//routes.get('/users' , (req, res) => {
-//  res.json(users);
-//});
+routes.get('/clientes' , (req, res) => {
+  res.json(users);
+});
 
 //Adicionando um objeto ao vetor
-routes.post('/users', (req, res) =>{
+routes.post('/clientes', (req, res) =>{
   const newUser = req.body; 
   //Guarda o que for passado no corpo da requisicao
   users.push(newUser);

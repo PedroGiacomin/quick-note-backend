@@ -18,8 +18,9 @@ module.exports = {
     const cliente_id = uuidv4();
     cliente.id = cliente_id;
 
-    const result = await connection('clientes').insert(cliente);
-    return result;
+    await connection('clientes').insert(cliente);
+    
+    return user_id;
     /**
       * 'cliente' eh um objeto JSON que estah sendo inserido na tabela, 
       * nele tem todos os campos das colunas da tabela 'clientes' 
