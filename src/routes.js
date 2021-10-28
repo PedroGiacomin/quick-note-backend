@@ -25,9 +25,9 @@ const users = [
 ]
 
 //Conseguindo o vetor do backend
-routes.get('/users' , (req, res) => {
-  res.json(users);
-});
+//routes.get('/users' , (req, res) => {
+//  res.json(users);
+//});
 
 //Adicionando um objeto ao vetor
 routes.post('/users', (req, res) =>{
@@ -71,5 +71,16 @@ routes.delete('/users/:user_id', (req, res) => {
   
   res.json({message: "Deleted " + selected});
 })
+
+//QUERY PARAMS
+//nao sao passados na declaracao da funcao, mas na propria rota no navegador
+//e.g. /users?
+routes.get('/users' , (req, res) => {
+  const query = req.query; //var que guarda as informacoes da query
+
+  console.log(query);
+  res.json(users);
+});
+
 
 module.exports = routes;
