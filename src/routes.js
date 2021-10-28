@@ -37,4 +37,39 @@ routes.post('/users', (req, res) =>{
   res.json({ message: "Success" });
 });
 
+//Mudando uma informacao num objeto do vetor
+routes.put('/users/:user_id', (req, res) => {
+
+  //req.params eh a variavel que guarda os params passados na rota, depois do '/:'
+  const {userId} = req.params;
+  const newFields = req.body;
+  let selectedIndex;
+
+  //Usuario selecionado no vetor
+  let selected = users.find((user, index) => {
+    selectedIndex = index;
+    return user.id === userId;
+  });
+
+  selected = {...selected, ...newFields}; 
+
+  users[selectedIndex] = selected;
+
+  res.json({message: "Success"});
+});
+
+routes.delete('/users/:user_id', (req, res) => {
+  const{userId} = req.params;
+
+  let selectedIndex;
+  let selected = users.find((user, index) => {
+    selectedIndex = index;
+    return user.id === userId;
+  });
+
+  users.splice(selectedIndex, 0);
+  
+  res.json({message: "Deleted " + selected});
+})
+
 module.exports = routes;
