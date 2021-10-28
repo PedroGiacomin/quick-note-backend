@@ -4,21 +4,37 @@ const routes = express.Router();
 
 //Rotas
 
-routes.post('/users' , (request, response) => {
-  
-  const params = request.query;
-  const params2 = request.params;
+//Simular o banco de dados aq
+const users = [
+  {
+    nome: "Jao",
+    id: 0
+  },
+  {
+    nome: "Pedro",
+    id: 1
+  },
+  {
+    nome: "Taylor",
+    id: 2
+  },
+  {
+    nome: "Laura",
+    id: 3
+  },
+]
 
-  //request.query retorna os Query Params
-  //resquest.params retorna os Route Params
+//Conseguindo o vetor do backend
+routes.get('/users' , (req, res) => {
+  res.json(users);
+});
 
-  console.log(params);
-  console.log(params2);
-
-  return response.json({
-    evento: "Semana Omni Stack",
-    aluno: "Diego Snatos"
-  })
-})
+//Adicionando um objeto ao vetor
+routes.post('/users', (req, res) =>{
+  const newUser = req.body; 
+  //Guarda o que for passado no corpo da requisicao
+  users.push(newUser);
+  res.json({ message: "Success" });
+});
 
 module.exports = routes;
