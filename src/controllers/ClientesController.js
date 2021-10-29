@@ -17,15 +17,25 @@ module.exports = {
       console.warn("Cliente creation failed: ", error)
       
       return response.status(500).json({
-      notification: "Internal server error while trying to create Cliente"
+        notification: "Internal server error while trying to create Cliente"
       })
     }
   },
 
   async getById(request, response){
     try{
+      const {id} = request.params;
+      const result = await ClientesModel.getById(id);
+
+      return response.json(result);
 
     }catch(error){
+
+      console.warn("Cliente request failed: ", error)
+      
+      return response.status(500).json({
+        notification: "Internal server error while trying to get Cliente"
+      })
       
     }
   },
@@ -34,7 +44,6 @@ module.exports = {
     try{
 
       const {id} = request.params;
-      console.log({id});
       const newCliente = request.body;
 
       await ClientesModel.updateById(id, newCliente);

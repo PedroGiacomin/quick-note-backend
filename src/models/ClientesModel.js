@@ -8,7 +8,6 @@ const {v4: uuidv4} = require('uuid');
  * Delete
  */
 
-
 module.exports = {  
 
   //Insere um novo cliente na coluna
@@ -34,7 +33,7 @@ module.exports = {
       .select('*');
     //O where precisa especificar a coluna e o valor que se procura nela
     //O select define quais colunas desse cliente vc quer receber
-
+  
     return result;
   },
 
