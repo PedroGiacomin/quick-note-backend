@@ -25,7 +25,6 @@ module.exports = {
 
       //O id eh passado na rota como /:id 
       const {produto_id} = request.params;
-      console.log({produto_id});
       const newProduto = request.body;
 
       await ProdutosModel.updateById(produto_id, newProduto);
@@ -42,9 +41,16 @@ module.exports = {
     }
   },
 
+  //Deleta um produto 
   async delete(request, response){
     try{
 
+      const {produto_id} = request.params;
+
+      await ProdutosModel.deleteById(produto_id);
+
+      return response.status(200).json({ "notification" : "Product deleted successfully"});
+      
     }catch(error){
       console.warn("Product deletion failed: ", error)
       
