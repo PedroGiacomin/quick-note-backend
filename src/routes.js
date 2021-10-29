@@ -59,48 +59,11 @@ routes.put('/produtos/:produto_id', ProdutosController.update);
 routes.delete('/produtos/:produto_id', ProdutosController.delete);
 
 //Clientes
-//Conseguindo o vetor do backend
-routes.get('/clientes' , (req, res) => {
-  res.json(users);
-});
-
-//Adicionando um objeto ao vetor
+routes.get('/clientes/:id' , ClientesController.getById);
 routes.post('/clientes', ClientesController.create);
+routes.put('/clientes/:id', ClientesController.update);
+routes.delete('/clientes/:id', ClientesController.delete);
 
-//Mudando uma informacao num objeto do vetor
-routes.put('/users/:user_id', (req, res) => {
-
-  //req.params eh a variavel que guarda os params passados na rota, depois do '/:'
-  const {userId} = req.params;
-  const newFields = req.body;
-  let selectedIndex;
-
-  //Usuario selecionado no vetor
-  let selected = users.find((user, index) => {
-    selectedIndex = index;
-    return user.id === userId;
-  });
-
-  selected = {...selected, ...newFields}; 
-
-  users[selectedIndex] = selected;
-
-  res.json({message: "Success"});
-});
-
-routes.delete('/users/:user_id', (req, res) => {
-  const{userId} = req.params;
-
-  let selectedIndex;
-  let selected = users.find((user, index) => {
-    selectedIndex = index;
-    return user.id === userId;
-  });
-
-  users.splice(selectedIndex, 0);
-  
-  res.json({message: "Deleted " + selected});
-})
 
 //QUERY PARAMS
 //nao sao passados na declaracao da funcao, mas na propria rota no navegador
