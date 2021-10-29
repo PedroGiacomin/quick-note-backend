@@ -47,10 +47,15 @@ module.exports = {
 
       const {produto_id} = request.params;
 
-      await ProdutosModel.deleteById(produto_id);
+      const result = await ProdutosModel.deleteById(produto_id);
+
+      //Impede que delete um item inexistente
+      if(result === 0){
+        return response.status(400).json({ "notification" : "Product not found"});
+      }
 
       return response.status(200).json({ "notification" : "Product deleted successfully"});
-      
+
     }catch(error){
       console.warn("Product deletion failed: ", error)
       
