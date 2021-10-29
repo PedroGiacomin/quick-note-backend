@@ -28,9 +28,9 @@ module.exports = {
   },
 
   //Acha e retorna o cliente pelo seu id (pode ser passado mais de um parametro por props na funcao)
-  async getById(cliente_id){
+  async getById(id){
     const result = await connection('clientes')
-      .where({cliente_id : cliente_id})
+      .where({id : id})
       .select('*');
     //O where precisa especificar a coluna e o valor que se procura nela
     //O select define quais colunas desse cliente vc quer receber
@@ -39,17 +39,17 @@ module.exports = {
   },
 
   //Altera o valor de um cliente, especificado pela sua id
-  async updateById(cliente_id, cliente){
+  async updateById(id, cliente){
     const result = await connection('clientes')
-      .where({cliente_id}) //{cliente_id : cliente_id} === {cliente_id}
+      .where({id}) //{id : id} === {id}
       .update(cliente); //Novamente, cliente eh um objeto json
 
     return result;
   },
 
   //Deleta um cliente, especificado pela sua id
-  async deleteById(cliente_id){
-    const result = await connection('clientes').where({category_id}).delete();
+  async deleteById(id){
+    const result = await connection('clientes').where({id}).delete();
     return result;
   }
 }

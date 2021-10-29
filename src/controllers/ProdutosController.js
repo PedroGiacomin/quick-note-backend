@@ -47,6 +47,7 @@ module.exports = {
 
       const {produto_id} = request.params;
 
+      //Retorna zero se o item n existir
       const result = await ProdutosModel.deleteById(produto_id);
 
       //Impede que delete um item inexistente

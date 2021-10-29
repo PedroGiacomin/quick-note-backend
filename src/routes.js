@@ -1,4 +1,5 @@
 const express = require('express');
+const ClientesController = require('./controllers/ClientesController');
 const ProdutosController = require('./controllers/ProdutosController');
 
 const routes = express.Router();
@@ -14,6 +15,18 @@ const routes = express.Router();
     "imagem" : "./anel1.png",
     "descricao" : "Anelzassooo",
     "id" : "cliente-x"
+  }
+
+  {
+    "nome" : "Zé Carlos",
+    "email" : "emaildozecarlos",
+    "telefone" : "999999999",
+    "nascimento" : "1999-03-12",
+    "cep" : "12345678",
+    "numero" : "456",
+    "bairro" : "Lagoa Grande",
+    "cidade": "Padimina",
+    "estado" : "Minas Gerais"
   }
  */   
 
@@ -52,12 +65,7 @@ routes.get('/clientes' , (req, res) => {
 });
 
 //Adicionando um objeto ao vetor
-routes.post('/clientes', (req, res) =>{
-  const newUser = req.body; 
-  //Guarda o que for passado no corpo da requisicao
-  users.push(newUser);
-  res.json({ message: "Success" });
-});
+routes.post('/clientes', ClientesController.create);
 
 //Mudando uma informacao num objeto do vetor
 routes.put('/users/:user_id', (req, res) => {
