@@ -40,10 +40,10 @@ const users = [
 ]
 
 //Produtos
-routes.get('/produtos/:id', ProdutosController.getById);
+routes.get('/produtos/:produto_id', ProdutosController.getById);
 routes.post('/produtos', ProdutosController.create);
-routes.put('/produtos', ProdutosController.update);
-routes.delete('/produtos', ProdutosController.delete);
+routes.put('/produtos/:produto_id', ProdutosController.update);
+routes.delete('/produtos/:produto_id', ProdutosController.delete);
 
 //Clientes
 //Conseguindo o vetor do backend

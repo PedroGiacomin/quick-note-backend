@@ -4,13 +4,14 @@ module.exports = {
 
   async create(request, response){
     try{
-      const newCiente = request.body;
+      const newCliente = request.body;
 
       //Chama a funcao DO MODEL para criar no banco de dados
       const result = await ClientesModel.create;
-        
+
       // O sqlite por padrao retorna o id quando cria
       return response.status(200).json(result);
+      
     }catch(error){
       console.warn("Product creation failed: ", error)
       

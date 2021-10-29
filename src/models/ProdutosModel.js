@@ -28,16 +28,18 @@ module.exports = {
   },
 
   //Altera o valor de um produto, especificado pela sua id
-  async updateById(product_id, product){
+  async updateById(produto_id, product){
     const result = await connection('produtos')
-      .where({product_id})
+      .where({produto_id})
       .update(product); 
     return result;
   },
 
   //Deleta produto, especificado pela sua id
-  async deleteById(product_id){
-    const result = await connection('produtos').where({product_id}).delete();
+  async deleteById(produto_id){
+    const result = await connection('produtos')
+      .where({produto_id})
+      .delete();
     return result;
   }
 }

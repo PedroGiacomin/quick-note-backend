@@ -20,7 +20,7 @@ module.exports = {
 
     await connection('clientes').insert(cliente);
     
-    return user_id;
+    return cliente_id;
     /**
       * 'cliente' eh um objeto JSON que estah sendo inserido na tabela, 
       * nele tem todos os campos das colunas da tabela 'clientes' 
